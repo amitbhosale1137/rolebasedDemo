@@ -14,10 +14,27 @@ export class App {
   constructor(private router: Router) {
     const role = localStorage.getItem('role');
     const companyId = localStorage.getItem('companyId');
+    const siteId = localStorage.getItem('siteId');
+    const profile = localStorage.getItem('profile');
 
-    // if root URL and role exists
-    // if (this.router.url === '/' && role === 'company-admin' && companyId) {
-    //   this.router.navigate(['/company', companyId]);
-    // }
+    if (role === 'system-admin') {
+      if (profile == 'system-admin') {
+        this.router.navigate(['/company/profile']);
+      } else {
+        this.router.navigate(['/company']);
+      }
+    } else if (role === 'company-admin' && companyId) {
+      if (profile == 'company-admin') {
+        this.router.navigate(['/company', companyId, 'profile']);
+      } else {
+        this.router.navigate(['/company', companyId]);
+      }
+    } else if (role === 'site-admin' && companyId && siteId) {
+      if (profile == 'site-admin') {
+        this.router.navigate(['/company', companyId, 'site', siteId, 'profile']);
+      } else {
+        this.router.navigate(['/company', companyId, 'site', siteId]);
+      }
+    }
   }
 }

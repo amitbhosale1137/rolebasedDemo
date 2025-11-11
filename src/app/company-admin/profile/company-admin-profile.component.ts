@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-company-admin-profile',
-  standalone: true,
   template: `
     <h2>Company Admin Profile</h2>
     <p>Company ID: {{ companyId }}</p>

@@ -13,19 +13,6 @@ export const routes: Routes = [
     data: { role: 'system-admin' },
   },
   {
-    path: 'company/:id',
-    loadComponent: () =>
-      import('./company-admin/company-admin').then((m) => m.CompanyAdminComponent),
-    canActivate: [RoleGuard],
-    data: { role: 'company-admin' },
-  },
-  {
-    path: 'company/:companyId/site/:siteId',
-    loadComponent: () => import('./site-admin/site-admin').then((m) => m.SiteAdminComponent),
-    canActivate: [RoleGuard],
-    data: { role: 'site-admin' },
-  },
-  {
     path: 'company/profile',
     loadComponent: () =>
       import('./system-admin/profile/system-admin-profile.component').then(
@@ -34,7 +21,13 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { role: 'system-admin' },
   },
-
+  {
+    path: 'company/:id',
+    loadComponent: () =>
+      import('./company-admin/company-admin').then((m) => m.CompanyAdminComponent),
+    canActivate: [RoleGuard],
+    data: { role: 'company-admin' },
+  },
   {
     path: 'company/:id/profile',
     loadComponent: () =>
@@ -43,6 +36,12 @@ export const routes: Routes = [
       ),
     canActivate: [RoleGuard],
     data: { role: 'company-admin' },
+  },
+  {
+    path: 'company/:companyId/site/:siteId',
+    loadComponent: () => import('./site-admin/site-admin').then((m) => m.SiteAdminComponent),
+    canActivate: [RoleGuard],
+    data: { role: 'site-admin' },
   },
 
   {

@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [SystemAdminComponent, CompanyAdminComponent, SiteAdminComponent, CommonModule],
   templateUrl: './dashboard.html',
 })

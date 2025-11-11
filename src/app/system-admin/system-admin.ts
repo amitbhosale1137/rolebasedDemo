@@ -1,12 +1,22 @@
 // system-admin.component.ts
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserRole } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-system-admin',
-  standalone: true,
-  template: `
-    <h2>Welcome System Admin</h2>
-    <p>You are viewing the /company route.</p>
-  `,
+  templateUrl: './system-admin.html',
 })
-export class SystemAdminComponent {}
+export class SystemAdminComponent {
+  role: string | null = null;
+
+  router = inject(Router);
+
+  goToProfile() {
+    localStorage.setItem('profile', 'system-admin');
+    this.role = localStorage.getItem('role');
+    if (this.role === 'system-admin') {
+      this.router.navigate(['/company/profile']);
+    }
+  }
+}

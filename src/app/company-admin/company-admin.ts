@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-admin',
-  standalone: true,
   templateUrl: './company-admin.html',
 })
 export class CompanyAdminComponent {
@@ -18,6 +17,7 @@ export class CompanyAdminComponent {
 
   goToProfile() {
     if (this.companyId) {
+      localStorage.setItem('profile', 'company-admin');
       this.router.navigate(['/company', this.companyId, 'profile']);
     }
   }
