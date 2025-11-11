@@ -1,0 +1,19 @@
+<p>dashboard works!</p>
+
+@switch (role) {
+@case ('system-admin') {
+<app-system-admin></app-system-admin>
+}
+
+@case ('company-admin') {
+<app-company-admin [companyId]="companyId"></app-company-admin>
+}
+
+@case ('site-admin') {
+<app-site-admin [companyId]="companyId" [siteId]="siteId"></app-site-admin>
+}
+
+@default {
+<p>No role selected</p>
+}
+}

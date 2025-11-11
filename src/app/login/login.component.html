@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <select formControlName="role">
+        <option value="system-admin">System Admin</option>
+        <option value="company-admin">Company Admin</option>
+        <option value="site-admin">Site Admin</option>
+    </select>
+
+    @if (form.get('role')?.value === 'company-admin' || form.get('role')?.value === 'site-admin') {
+    <input formControlName="companyId" placeholder="Company ID" />
+    }
+
+    @if (form.get('role')?.value === 'site-admin') {
+    <input formControlName="siteId" placeholder="Site ID" />
+    }
+
+    <button type="submit">Login</button>
+</form>
