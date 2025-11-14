@@ -17,6 +17,19 @@ export class App {
     const siteId = localStorage.getItem('siteId');
     const profile = localStorage.getItem('profile');
 
+    // Save user object
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ id: 1, name: 'Alice', email: 'alice@example.com' })
+    );
+
+    // Retrieve user object
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      console.log(user.name);
+    }
+
     if (role === 'system-admin') {
       if (profile == 'system-admin') {
         this.router.navigate(['/company/profile']);
